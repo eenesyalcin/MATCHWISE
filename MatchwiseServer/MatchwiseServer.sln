@@ -3,8 +3,57 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35521.163 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B26ED59B-9ED3-4A99-85F4-2FAACEBBE40B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchwiseServer.Domain", "Core\MatchwiseServer.Domain\MatchwiseServer.Domain.csproj", "{CBB2D393-DFCE-49FF-94B2-200BE3EECC8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchwiseServer.Application", "Core\MatchwiseServer.Application\MatchwiseServer.Application.csproj", "{5B48C33E-A1F0-4CC6-841B-7116B37C03B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{909DE108-1C2B-40C3-8AFA-8429629C7AFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchwiseServer.Infrastructure", "Infrastructure\MatchwiseServer.Infrastructure\MatchwiseServer.Infrastructure.csproj", "{518076C4-7F04-4E44-BDDE-724075867DBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchwiseServer.Persistence", "Infrastructure\MatchwiseServer.Persistence\MatchwiseServer.Persistence.csproj", "{0FE81CED-1724-4176-8383-5947EA6282E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{BE6C7A2F-A139-4B73-B49C-DEF8871A4825}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchwiseServer.API", "Presentation\MatchwiseServer.API\MatchwiseServer.API.csproj", "{CFCEF16F-B0B6-4B0B-B264-45F08C8A5603}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBB2D393-DFCE-49FF-94B2-200BE3EECC8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB2D393-DFCE-49FF-94B2-200BE3EECC8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB2D393-DFCE-49FF-94B2-200BE3EECC8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB2D393-DFCE-49FF-94B2-200BE3EECC8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B48C33E-A1F0-4CC6-841B-7116B37C03B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B48C33E-A1F0-4CC6-841B-7116B37C03B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B48C33E-A1F0-4CC6-841B-7116B37C03B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B48C33E-A1F0-4CC6-841B-7116B37C03B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{518076C4-7F04-4E44-BDDE-724075867DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{518076C4-7F04-4E44-BDDE-724075867DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{518076C4-7F04-4E44-BDDE-724075867DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{518076C4-7F04-4E44-BDDE-724075867DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FE81CED-1724-4176-8383-5947EA6282E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE81CED-1724-4176-8383-5947EA6282E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE81CED-1724-4176-8383-5947EA6282E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE81CED-1724-4176-8383-5947EA6282E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFCEF16F-B0B6-4B0B-B264-45F08C8A5603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFCEF16F-B0B6-4B0B-B264-45F08C8A5603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFCEF16F-B0B6-4B0B-B264-45F08C8A5603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFCEF16F-B0B6-4B0B-B264-45F08C8A5603}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CBB2D393-DFCE-49FF-94B2-200BE3EECC8A} = {B26ED59B-9ED3-4A99-85F4-2FAACEBBE40B}
+		{5B48C33E-A1F0-4CC6-841B-7116B37C03B6} = {B26ED59B-9ED3-4A99-85F4-2FAACEBBE40B}
+		{518076C4-7F04-4E44-BDDE-724075867DBE} = {909DE108-1C2B-40C3-8AFA-8429629C7AFE}
+		{0FE81CED-1724-4176-8383-5947EA6282E1} = {909DE108-1C2B-40C3-8AFA-8429629C7AFE}
+		{CFCEF16F-B0B6-4B0B-B264-45F08C8A5603} = {BE6C7A2F-A139-4B73-B49C-DEF8871A4825}
 	EndGlobalSection
 EndGlobal

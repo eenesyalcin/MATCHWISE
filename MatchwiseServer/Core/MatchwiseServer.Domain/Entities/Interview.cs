@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MatchwiseServer.Domain.Entities.Common;
+﻿using MatchwiseServer.Domain.Entities.Common;
 
 namespace MatchwiseServer.Domain.Entities
 {
     public class Interview : BaseEntity
     {
-        public string? CandidateName { get; set; }
-        public string? JobPosition { get; set; }
-        public DateTime ScheduleDate { get; set; }
-        public string? Status { get; set; }
-        public List<string>? Questions { get; set; }
-        public List<string>? ChatMessages { get; set; }
+        public Guid CandidateId { get; set; }
+        public Candidate? Candidate { get; set; }
 
+        public Guid JobPostingId { get; set; }
+        public JobPosting? JobPosting { get; set; }
+
+        public DateTime InterviewDate { get; set; }                             // Mülakatın yapıldığı tarih
+        public ICollection<InterviewResult>? InterviewResult { get; set; }      // Mülakat sonuçları
     }
 }

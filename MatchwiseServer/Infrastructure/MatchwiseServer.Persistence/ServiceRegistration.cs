@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MatchwiseServer.Application.Abstractions;
-using MatchwiseServer.Persistence.Concretes;
+﻿using MatchwiseServer.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MatchwiseServer.Persistence
@@ -13,7 +8,7 @@ namespace MatchwiseServer.Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddSingleton<IInterviewService, InterviewService>();
+            services.AddDbContext<MatchwiseServerDbContext>(options => options.UseSqlServer("Data Source=TOPLANTINB4\\SQLEXPRESS;Initial Catalog=MatchwiseServerDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
         }
     }
 }

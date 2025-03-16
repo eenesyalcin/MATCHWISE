@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MatchwiseServer.Persistence.Migrations
 {
     [DbContext(typeof(MatchwiseServerDbContext))]
-    [Migration("20250313105545_mg_1")]
+    [Migration("20250316215446_mg_1")]
     partial class mg_1
     {
         /// <inheritdoc />

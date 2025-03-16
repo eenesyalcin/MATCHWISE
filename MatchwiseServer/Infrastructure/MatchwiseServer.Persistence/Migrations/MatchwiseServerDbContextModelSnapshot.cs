@@ -188,24 +188,6 @@ namespace MatchwiseServer.Persistence.Migrations
                     b.ToTable("ProgrammingLanguages");
                 });
 
-            modelBuilder.Entity("MatchwiseServer.Domain.Entities.Test", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tests");
-                });
-
             modelBuilder.Entity("CandidateProgrammingLanguage", b =>
                 {
                     b.HasOne("MatchwiseServer.Domain.Entities.Candidate", null)

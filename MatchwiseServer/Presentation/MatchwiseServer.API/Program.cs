@@ -9,8 +9,11 @@ namespace MatchwiseServer.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddPersistenceServices();
+            // IConfiguration ile ortam deðiþkenini kullan
+            var configuration = builder.Configuration;
+
+            // Persistence servislerini ekle
+            builder.Services.AddPersistenceServices(configuration);
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

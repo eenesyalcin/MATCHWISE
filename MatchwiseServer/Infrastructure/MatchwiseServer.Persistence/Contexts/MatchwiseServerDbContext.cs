@@ -20,5 +20,6 @@ namespace MatchwiseServer.Persistence.Contexts
         public DbSet<JobPosting> JobPostings { get; set; }
         public DbSet<Interview> Interviews { get; set; }
         public DbSet<InterviewResult> InterviewResults { get; set; }
+        public DbSet<Test> Tests { get; set; }
     }
 }

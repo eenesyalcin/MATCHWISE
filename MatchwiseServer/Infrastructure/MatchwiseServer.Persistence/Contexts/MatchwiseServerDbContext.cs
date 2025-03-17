@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MatchwiseServer.Domain.Entities;
+using MatchwiseServer.Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace MatchwiseServer.Persistence.Contexts
@@ -20,5 +21,27 @@ namespace MatchwiseServer.Persistence.Contexts
         public DbSet<JobPosting> JobPostings { get; set; }
         public DbSet<Interview> Interviews { get; set; }
         public DbSet<InterviewResult> InterviewResults { get; set; }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var datas = ChangeTracker.Entries<BaseEntity>();
+
+            foreach (var data in datas)
+            {
+                switch (data.State)
+                {
+                    case EntityState.Added:
+                        data.Entity.CreatedDate = DateTime.UtcNow;
+                        break;
+                    case EntityState.Modified:
+                        data.Entity.UpdatedDate = DateTime.UtcNow;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return await base.SaveChangesAsync(cancellationToken);
+        }
     }
 }

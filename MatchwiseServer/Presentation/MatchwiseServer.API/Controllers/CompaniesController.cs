@@ -20,22 +20,33 @@ namespace MatchwiseServer.API.Controllers
             _companyWriteRepository = companyWriteRepository;
         }
 
-        // 📌 Tracking mekanizmasının test edilmesi
-        [HttpPut]
-        public async Task<IActionResult> Get()
+        // 📌 Interceptor operasyonunda CreatedDate property'sinin test edilmesi.
+        [HttpPost]
+        public async Task<IActionResult> Add()
         {
-            Company? company = await _companyReadRepository.GetByIdAsync("2d847589-f8d1-4ffa-b068-2d001632b899", false);
-
-            if (company == null)
+            await _companyWriteRepository.AddRangeAsync(new()
             {
-                return NotFound("❌ Hata: Belirtilen ID'ye sahip şirket bulunamadı!");
-            }
+                new()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Teknoloji A.Ş.",
+                    Industry = "Yazılım ve Bilişim",
+                    Location = "Trabzon, Türkiye"
+                }
+            });
 
-            company.Location = "Antalya, Türkiye";
             await _companyWriteRepository.SaveAsync();
 
-            return Ok("✅ Şirket bilgisi güncellendi!");
+            return Ok("✅ Yeni Şirket başarıyla eklendi!");
         }
 
+        // 📌 Interceptor operasyonunda UpdatedDate property'sinin test edilmesi.
+        [HttpPut]
+        public async Task Update()
+        {
+            Company company = await _companyReadRepository.GetByIdAsync("d98cccdf-095b-46db-be9f-46be12152136");
+            company.Location = "Ankara, Türkiye";
+            await _companyWriteRepository.SaveAsync();
+        }
     }
 }

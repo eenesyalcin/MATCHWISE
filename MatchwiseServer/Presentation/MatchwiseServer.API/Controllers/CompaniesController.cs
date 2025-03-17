@@ -20,25 +20,22 @@ namespace MatchwiseServer.API.Controllers
             _companyWriteRepository = companyWriteRepository;
         }
 
-        // 📌 Yeni şirket ekleme metodu
-        [HttpPost]
+        // 📌 Tracking mekanizmasının test edilmesi
+        [HttpPut]
         public async Task<IActionResult> Get()
         {
-            await _companyWriteRepository.AddRangeAsync(new()
-            {
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Teknoloji A.Ş.",
-                    Industry = "Yazılım ve Bilişim",
-                    Location = "Ankara, Türkiye",
-                    CreatedDate = DateTime.UtcNow
-                }
-            });
+            Company? company = await _companyReadRepository.GetByIdAsync("2d847589-f8d1-4ffa-b068-2d001632b899", false);
 
+            if (company == null)
+            {
+                return NotFound("❌ Hata: Belirtilen ID'ye sahip şirket bulunamadı!");
+            }
+
+            company.Location = "Antalya, Türkiye";
             await _companyWriteRepository.SaveAsync();
 
-            return Ok("✅ Yeni Şirket başarıyla eklendi!");
+            return Ok("✅ Şirket bilgisi güncellendi!");
         }
+
     }
 }

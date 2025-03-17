@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MatchwiseServer.Persistence.Migrations
 {
     [DbContext(typeof(MatchwiseServerDbContext))]
-    [Migration("20250316215446_mg_1")]
+    [Migration("20250317002652_mg_1")]
     partial class mg_1
     {
         /// <inheritdoc />
@@ -92,7 +92,7 @@ namespace MatchwiseServer.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CandidateId")
+                    b.Property<Guid?>("CandidateId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedDate")
@@ -210,9 +210,7 @@ namespace MatchwiseServer.Persistence.Migrations
                 {
                     b.HasOne("MatchwiseServer.Domain.Entities.Candidate", "Candidate")
                         .WithMany("Interview")
-                        .HasForeignKey("CandidateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CandidateId");
 
                     b.HasOne("MatchwiseServer.Domain.Entities.JobPosting", "JobPosting")
                         .WithMany("Interview")

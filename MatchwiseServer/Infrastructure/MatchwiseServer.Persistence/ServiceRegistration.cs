@@ -1,4 +1,6 @@
-﻿using MatchwiseServer.Persistence.Contexts;
+﻿using MatchwiseServer.Application.Repositories;
+using MatchwiseServer.Persistence.Contexts;
+using MatchwiseServer.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +15,13 @@ namespace MatchwiseServer.Persistence
 
             services.AddDbContext<MatchwiseServerDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            services.AddScoped<IInterviewReadRepository, InterviewReadRepository>();
+            services.AddScoped<IInterviewWriteRepository, InterviewWriteRepository>();
+            services.AddScoped<IJobPostingReadRepository, JobPostingReadRepository>();
+            services.AddScoped<IJobPostingWriteRepository, JobPostingWriteRepository>();
+            services.AddScoped<ICompanyReadRepository, CompanyReadRepository>();
+            services.AddScoped<ICompanyWriteRepository, CompanyWriteRepository>();
         }
 
     }

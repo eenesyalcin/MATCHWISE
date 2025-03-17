@@ -67,7 +67,7 @@ namespace MatchwiseServer.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CandidateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CandidateId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     JobPostingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     InterviewDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -79,8 +79,7 @@ namespace MatchwiseServer.Persistence.Migrations
                         name: "FK_Interviews_Candidates_CandidateId",
                         column: x => x.CandidateId,
                         principalTable: "Candidates",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Interviews_JobPostings_JobPostingId",
                         column: x => x.JobPostingId,

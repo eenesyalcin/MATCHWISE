@@ -4,7 +4,7 @@ namespace MatchwiseServer.Domain.Entities
 {
     public class Interview : BaseEntity
     {
-        public Guid CandidateId { get; set; }
+        public Guid? CandidateId { get; set; }
         public Candidate? Candidate { get; set; }
 
         public Guid JobPostingId { get; set; }

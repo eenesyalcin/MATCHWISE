@@ -89,7 +89,7 @@ namespace MatchwiseServer.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CandidateId")
+                    b.Property<Guid?>("CandidateId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedDate")
@@ -207,9 +207,7 @@ namespace MatchwiseServer.Persistence.Migrations
                 {
                     b.HasOne("MatchwiseServer.Domain.Entities.Candidate", "Candidate")
                         .WithMany("Interview")
-                        .HasForeignKey("CandidateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CandidateId");
 
                     b.HasOne("MatchwiseServer.Domain.Entities.JobPosting", "JobPosting")
                         .WithMany("Interview")

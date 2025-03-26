@@ -443,3 +443,49 @@ section {
 .our-team-item p{
     font-size: 1.3rem;
 }
+
+
+//-------------//
+//   CONTACT   //
+//-------------//
+.contact{
+    background-color: var(--bg-color);
+}
+
+.contact form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin: 5rem auto;
+    text-align: center;
+}
+
+.contact form .input-box{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box input,
+.contact form textarea{
+    width: 100%;
+    padding: 2.5rem;
+    color: var(--text-color);
+    background-color: var(--second-bg-color);
+    border-radius: 2rem;
+    border: 2px solid var(--main-color);
+    margin: 1.5rem 0;
+    resize: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// Mozilla Firefox için!
+// input[type="number"]{
+//     -moz-appearance: none;
+// }

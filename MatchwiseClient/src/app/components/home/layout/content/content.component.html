@@ -8,7 +8,7 @@
 
 
         <div class="btn-group">
-            <a href="#" class="btn">Mülakatlar</a>
+            <a href="#interviews" class="btn">Mülakatlar</a>
         </div>
     </div>
 
@@ -21,7 +21,7 @@
 
 <!-- SERVICES START -->
 <section class="services" id="services">
-    <h2 class="heading">HİZMETLERİMİZ</h2>
+    <h2 class="heading">HİZMETLER</h2>
 
     <div class="timeline-items">
         <div class="timeline-item">
@@ -178,17 +178,37 @@
     <form action="">
         <div class="input-group">
             <div class="input-box">
-                <input type="text" placeholder="Adınız" required>
-                <input type="email" placeholder="E-posta">
+                <label for="nameSurname">
+                    <i class='bx bxs-group'></i>
+                    <span>Ad Soyad</span>
+                </label>
+                <input type="text" id="nameSurname" required>
+                <label for="email">
+                    <i class='bx bxs-envelope' ></i>
+                    <span>E-posta</span>
+                </label>
+                <input type="email" id="email">
             </div>
             <div class="input-box">
-                <input type="number" placeholder="Telefon">
-                <input type="text" placeholder="Konu">
+                <label for="phoneNumber">
+                    <i class='bx bxs-phone' ></i>
+                    <span>Telefon Numarası</span>
+                </label>
+                <input type="number" id="phoneNumber">
+                <label for="subject">
+                    <i class='bx bxs-pin'></i>
+                    <span>Konu</span>
+                </label>
+                <input type="text" id="subject">
             </div>
         </div>
 
         <div class="input-group-2">
-            <textarea placeholder="Mesajınız" id="" cols="30" rows="10"></textarea>
+            <label for="message">
+                <i class='bx bxs-message' ></i>
+                <span>Mesaj</span>
+            </label>
+            <textarea id="message" cols="30" rows="10"></textarea>
             <input type="submit" value="Mesaj Gönder" class="btn">
         </div>
     </form>

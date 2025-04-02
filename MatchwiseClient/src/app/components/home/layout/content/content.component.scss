@@ -159,6 +159,7 @@ section {
         width: calc(100% + 8px)
     }
 }
+
 // ---------------- //
 //     HOME END     //
 // ---------------- //
@@ -261,6 +262,7 @@ section {
     font-weight: 300;
     line-height: 22px;
 }
+
 // -------------------- //
 //     SERVICES END     //
 // -------------------- //
@@ -364,6 +366,7 @@ section {
     font-size: 1.5rem;
     margin-right: 0.4rem;
 }
+
 // ---------------------- //
 //     INTERVIEWS END     //
 // ---------------------- //
@@ -434,6 +437,7 @@ section {
 .our-team-item p {
     font-size: 1.3rem;
 }
+
 // -------------------- //
 //     OUR TEAM END     //
 // -------------------- //
@@ -450,17 +454,61 @@ section {
 
 .contact form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* Önce dikey hizalayalım */
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
     margin: 5rem auto;
-    text-align: center;
+    width: 90%;
+    max-width: 1200px;
 }
 
-.contact form .input-box {
+.input-group {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+}
+
+.input-pair {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+
+.input-pair .input-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box input {
+    width: 100%;
+}
+
+.input-group-2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group-2 textarea {
+    width: 100%;
+    height: 200px;
+}
+
+.input-group-2 .btn {
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border-radius: 2rem;
 }
 
 .contact label {
@@ -475,12 +523,12 @@ section {
 }
 
 .contact label i {
-    font-size: 2rem;    
+    font-size: 2rem;
     color: var(--main-color);
 }
 
 .contact .input-group label i,
-.contact .input-group-2 label i{
+.contact .input-group-2 label i {
     margin-top: 0.2rem;
 }
 
@@ -593,6 +641,7 @@ input[type="number"]::-webkit-outer-spin-button {
         line-height: 1;
     }
 }
+
 // -------------------------------- //
 //     RESPONSIVE STRUCTURE END     //
 // -------------------------------- //

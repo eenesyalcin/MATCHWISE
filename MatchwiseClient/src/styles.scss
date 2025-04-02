@@ -13,6 +13,11 @@
     font-family: "Poppins", sans-serif;
 }
 
+body{
+    min-height: 100vh;
+    background: #d2d2d2;
+}
+
 :root{
     --bg-color: #080808;
     --second-bg-color: #131313;

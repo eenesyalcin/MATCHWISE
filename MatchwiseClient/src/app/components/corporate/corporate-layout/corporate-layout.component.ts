@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-corporate-layout',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './corporate-layout.component.html',
   styleUrl: './corporate-layout.component.scss'
 })
-export class CorporateLayoutComponent {
+export class CorporateLayoutComponent implements OnInit {
+
+  constructor(private spinnerService: NgxSpinnerService) {}
+
+  ngOnInit(): void {
+    this.spinnerService.show();
+  }
 
 }

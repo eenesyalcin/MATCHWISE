@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { CustomToastrService } from './services/custom-toastr.service';
 import { ToastrMessageType } from './enums/toastrMessageType';
 import { ToastrPosition } from './enums/toastrPosition';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NgxSpinnerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

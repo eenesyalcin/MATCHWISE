@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { CustomToastrService } from './services/custom-toastr.service';
+import { ToastrMessageType } from './enums/toastrMessageType';
+import { ToastrPosition } from './enums/toastrPosition';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +14,13 @@ export class AppComponent implements OnInit {
 
   title = 'MatchwiseClient';
 
-  constructor(private toastr: ToastrService) {}
+  constructor(private customToastrService: CustomToastrService) {}
 
   ngOnInit(): void {
-    this.toastr.success("Toastr kütüphanesi başarılı bir şekilde çalışıyor.", "BAŞARILI")
+    this.customToastrService.message("Toastr kütüphanesi başarılı bir şekilde çalışıyor.", "BAŞARILI", {
+      messageType: ToastrMessageType.Success,
+      position: ToastrPosition.TopRight
+    });
   }
 
 }

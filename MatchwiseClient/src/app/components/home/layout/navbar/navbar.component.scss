@@ -1,8 +1,8 @@
-span{
+span {
     color: var(--main-color);
 }
 
-.header{
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -14,9 +14,9 @@ span{
     justify-content: space-between;
     align-items: center;
     z-index: 5;
-}   
+}
 
-.logo{
+.logo {
     font-size: 3rem;
     color: var(--text-color);
     font-weight: 800;
@@ -25,15 +25,15 @@ span{
     transition: 0.3s ease-in-out;
 }
 
-.logo:hover{
+.logo:hover {
     transform: scale(1.1);
 }
 
-.logo span{
+.logo span {
     text-shadow: 0 0 25px var(--main-color);
 }
 
-.navbar a{
+.navbar a {
     font-size: 1.8rem;
     color: var(--text-color);
     margin-left: 4rem;
@@ -44,12 +44,32 @@ span{
 }
 
 .navbar a:hover,
-.navbar a:active{
+.navbar a:active {
     color: var(--main-color);
     border-bottom: 3px solid var(--main-color);
 }
 
-#menu-icon{
+.navbar .btn-group {
+    margin-left: 2rem;
+}
+
+.navbar .btn-group .btn {
+    padding: 0.8rem 2.4rem;
+    font-size: 1.4rem;
+    background-color: var(--main-color);
+    color: black;
+    border-radius: 4rem;
+    box-shadow: 0 0 15px var(--main-color);
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar .btn-group .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px var(--main-color);
+}
+
+#menu-icon {
     font-size: 3.6rem;
     color: var(--main-color);
     display: none;

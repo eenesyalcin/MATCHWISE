@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './components/home/layout/layout.component';
 import { AdminLayoutComponent } from './components/admin/admin-layout/admin-layout.component';
+import { CorporateLayoutComponent } from './components/corporate/corporate-layout/corporate-layout.component';
 
 export const routes: Routes = [
     {
@@ -13,5 +14,9 @@ export const routes: Routes = [
       {
         path: 'admin',
         component: AdminLayoutComponent
+      },
+      {
+        path: 'kurumsal',
+        component: CorporateLayoutComponent
       }
 ];

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { BaseComponent } from '../../base/base.component';
+import { SpinnerType } from '../../../enums/spinnerType';
 
 @Component({
   selector: 'app-corporate-layout',
@@ -7,12 +9,14 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './corporate-layout.component.html',
   styleUrl: './corporate-layout.component.scss'
 })
-export class CorporateLayoutComponent implements OnInit {
+export class CorporateLayoutComponent extends BaseComponent implements OnInit {
 
-  constructor(private spinnerService: NgxSpinnerService) {}
+  constructor(customSpinnerService: NgxSpinnerService) {
+    super(customSpinnerService);
+  }
 
   ngOnInit(): void {
-    this.spinnerService.show();
+    this.showSpinner(SpinnerType.BallScaleRippleMultiple);
   }
 
 }

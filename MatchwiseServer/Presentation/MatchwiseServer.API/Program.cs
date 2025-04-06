@@ -15,6 +15,16 @@ namespace MatchwiseServer.API
             // Persistence servislerini ekle
             builder.Services.AddPersistenceServices(configuration);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    policy => policy
+                        .WithOrigins("http://localhost:4200", "https://localhost:4200")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -29,6 +39,7 @@ namespace MatchwiseServer.API
                 app.UseSwaggerUI();
             }
 
+            app.UseCors("AllowAll");
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

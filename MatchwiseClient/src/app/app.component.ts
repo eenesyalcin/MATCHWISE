@@ -5,6 +5,8 @@ import { ToastrMessageType } from './enums/toastrMessageType';
 import { ToastrPosition } from './enums/toastrPosition';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+declare var $: any;
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, NgxSpinnerModule],
@@ -21,6 +23,11 @@ export class AppComponent implements OnInit {
     this.customToastrService.message("Toastr kütüphanesi başarılı bir şekilde çalışıyor.", "BAŞARILI", {
       messageType: ToastrMessageType.Success,
       position: ToastrPosition.TopRight
+    });
+
+    const interviewId: string = "cafc0771-1a1a-4637-91ae-e386d33aaa4b"
+    $.get(`https://localhost:7103/api/Interviews?id=${interviewId}`, data => {
+      console.log(data);
     });
   }
 

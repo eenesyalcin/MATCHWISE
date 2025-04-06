@@ -34,16 +34,28 @@ export class HttpClientService {
   get<T>(requestParameter: Partial<RequestParameters>, id?: string): Observable<T>{
     let url: string = "";
     if(requestParameter.fullEndPoint){
-      url = requestParameter.fullEndPoint
+      url = requestParameter.fullEndPoint;
     }else{
       if(id){
-        url = `${this.url(requestParameter)}/${id}`
+        url = `${this.url(requestParameter)}/${id}`;
       }else{
-        url = `${this.url(requestParameter)}`
+        url = `${this.url(requestParameter)}`;
       }
     }
 
     return this.httpClient.get<T>(url, { headers: requestParameter.headers });
+  }
+
+
+  post<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>): Observable<T>{
+    let url: string = "";
+    if(requestParameter.fullEndPoint){
+      url = requestParameter.fullEndPoint;
+    }else{
+      url = `${this.url(requestParameter)}`;
+    }
+
+    return this.httpClient.post<T>(url, body, { headers: requestParameter.headers });
   }
 
 }

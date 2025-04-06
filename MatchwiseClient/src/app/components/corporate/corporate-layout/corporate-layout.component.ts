@@ -25,6 +25,14 @@ export class CorporateLayoutComponent extends BaseComponent implements OnInit {
     this.httpClientService.get({
       controller: "Companies"
     }).subscribe(data => console.log(data));
+
+    this.httpClientService.post({
+      controller: "Companies"
+    }, {
+      name: "Matchwise Teknoloji A.Ş.",
+      industry: "Yazılım ve Bilişim",
+      location: "Ankara, Türkiye"
+    }).subscribe();
   }
 
 }

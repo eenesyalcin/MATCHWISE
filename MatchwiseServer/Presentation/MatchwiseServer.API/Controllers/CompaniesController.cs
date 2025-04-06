@@ -1,4 +1,6 @@
-﻿using MatchwiseServer.Application.Repositories;
+﻿using System.Net;
+using MatchwiseServer.Application.Repositories;
+using MatchwiseServer.Application.ViewModels.Companies;
 using MatchwiseServer.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,33 +22,48 @@ namespace MatchwiseServer.API.Controllers
             _companyWriteRepository = companyWriteRepository;
         }
 
-        // 📌 Interceptor operasyonunda CreatedDate property'sinin test edilmesi.
-        [HttpPost]
-        public async Task<IActionResult> Add()
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-            await _companyWriteRepository.AddRangeAsync(new()
-            {
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Teknoloji A.Ş.",
-                    Industry = "Yazılım ve Bilişim",
-                    Location = "Trabzon, Türkiye"
-                }
-            });
-
-            await _companyWriteRepository.SaveAsync();
-
-            return Ok("✅ Yeni Şirket başarıyla eklendi!");
+            return Ok(_companyReadRepository.GetAll(false));
         }
 
-        // 📌 Interceptor operasyonunda UpdatedDate property'sinin test edilmesi.
-        [HttpPut]
-        public async Task Update()
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(string id)
         {
-            Company company = await _companyReadRepository.GetByIdAsync("d98cccdf-095b-46db-be9f-46be12152136");
-            company.Location = "Ankara, Türkiye";
+            return Ok(await _companyReadRepository.GetByIdAsync(id, false));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(VM_Create_Company model)
+        {
+            await _companyWriteRepository.AddAsync(new()
+            {
+                Name = model.Name,
+                Industry = model.Industry,
+                Location = model.Location,
+            });
             await _companyWriteRepository.SaveAsync();
+            return StatusCode((int)HttpStatusCode.Created);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(VM_Update_Company model)
+        {
+            Company company = await _companyReadRepository.GetByIdAsync(model.Id);
+            company.Name = model.Name;
+            company.Industry = model.Industry;
+            company.Location = model.Location;
+            await _companyWriteRepository.SaveAsync();
+            return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _companyWriteRepository.RemoveAsync(id);
+            await _companyWriteRepository.SaveAsync();
+            return Ok();
         }
     }
 }

@@ -34,12 +34,18 @@ export class CorporateLayoutComponent extends BaseComponent implements OnInit {
     //   location: "Ankara, Türkiye"
     // }).subscribe();
 
-    this.httpClientService.put({
+    // this.httpClientService.put({
+    //   controller: "Companies"
+    // }, {
+    //   id: "c57bc6dc-92a9-41ad-d595-08dd7560d48c",
+    //   name: "Logo Yazılım A.Ş.",
+    //   industry: "Yazılım Teknolojileri",
+    //   location: "Kastamonu"
+    // }).subscribe();
+
+    this.httpClientService.delete({
       controller: "Companies"
-    }, {
-      id: "0b12276d-8d84-4f99-0470-08dd755c9c6b",
-      location: "Kastamonu"
-    }).subscribe();
+    }, "c57bc6dc-92a9-41ad-d595-08dd7560d48c").subscribe();
   }
 
 }

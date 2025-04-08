@@ -13,14 +13,6 @@ import { SpinnerType } from '../../../enums/spinnerType';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
-export class LayoutComponent extends BaseComponent implements OnInit {
-
-  constructor(spinner: NgxSpinnerService){
-    super(spinner)
-  }
-
-  ngOnInit(): void {
-    this.showSpinner(SpinnerType.SquareJellyBox)
-  }
+export class LayoutComponent {
 
 }

@@ -13,22 +13,8 @@ declare var $: any;
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   title = 'MatchwiseClient';
-
-  constructor(private customToastrService: CustomToastrService) {}
-
-  ngOnInit(): void {
-    this.customToastrService.message("Toastr kütüphanesi başarılı bir şekilde çalışıyor.", "BAŞARILI", {
-      messageType: ToastrMessageType.Success,
-      position: ToastrPosition.TopRight
-    });
-
-    const interviewId: string = "cafc0771-1a1a-4637-91ae-e386d33aaa4b"
-    $.get(`https://localhost:7103/api/Interviews?id=${interviewId}`, data => {
-      console.log(data);
-    });
-  }
 
 }

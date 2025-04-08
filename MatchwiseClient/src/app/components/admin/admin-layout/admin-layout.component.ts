@@ -9,14 +9,6 @@ import { SpinnerType } from '../../../enums/spinnerType';
   templateUrl: './admin-layout.component.html',
   styleUrl: './admin-layout.component.scss'
 })
-export class AdminLayoutComponent extends BaseComponent implements OnInit {
-
-  constructor(customSpinnerService: NgxSpinnerService) {
-    super(customSpinnerService);
-  }
-
-  ngOnInit(): void {
-    this.showSpinner(SpinnerType.Cog);
-  }
+export class AdminLayoutComponent {
 
 }

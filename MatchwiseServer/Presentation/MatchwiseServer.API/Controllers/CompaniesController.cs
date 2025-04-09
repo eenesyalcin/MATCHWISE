@@ -3,6 +3,7 @@ using MatchwiseServer.Application.Repositories;
 using MatchwiseServer.Application.ViewModels.Companies;
 using MatchwiseServer.Domain.Entities;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MatchwiseServer.API.Controllers
@@ -37,11 +38,18 @@ namespace MatchwiseServer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(VM_Create_Company model)
         {
+            // Şifreyi hash'le
+            var passwordHasher = new PasswordHasher<Company>();
+            string hashedPassword = passwordHasher.HashPassword(null, model.Password);
+
             await _companyWriteRepository.AddAsync(new()
             {
-                Name = model.Name,
-                Industry = model.Industry,
+                CorporateName = model.CorporateName,
+                TaxNumber = model.TaxNumber,
+                Sector = model.Sector,
                 Location = model.Location,
+                Email = model.Email,
+                Password = hashedPassword
             });
             await _companyWriteRepository.SaveAsync();
             return StatusCode((int)HttpStatusCode.Created);
@@ -51,10 +59,19 @@ namespace MatchwiseServer.API.Controllers
         public async Task<IActionResult> Put(VM_Update_Company model)
         {
             Company company = await _companyReadRepository.GetByIdAsync(model.Id);
-            company.Name = model.Name;
-            company.Industry = model.Industry;
+
+            // Şifreyi hash'le
+            var passwordHasher = new PasswordHasher<Company>();
+            company.Password = passwordHasher.HashPassword(company, model.Password);
+
+            company.CorporateName = model.CorporateName;
+            company.TaxNumber = model.TaxNumber;
+            company.Sector = model.Sector;
             company.Location = model.Location;
+            company.Email = model.Email;
+
             await _companyWriteRepository.SaveAsync();
+
             return Ok();
         }
 

@@ -8,8 +8,11 @@ namespace MatchwiseServer.Application.ViewModels.Companies
 {
     public class VM_Create_Company
     {
-        public string? Name { get; set; }        // Şirket adı
-        public string? Industry { get; set; }    // Sektör
-        public string? Location { get; set; }    // Konum-Adres
+        public string? CorporateName { get; set; }
+        public string? TaxNumber { get; set; }
+        public string? Sector { get; set; }
+        public string? Location { get; set; }
+        public string? Email { get; set; }
+        public string? Password { get; set; }
     }
 }

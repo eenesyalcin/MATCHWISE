@@ -1,0 +1,142 @@
+.body {
+    min-height: 100vh;
+    background-image: url("/individual-login-image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    width: 400px;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.top-header header {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.input-field {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-field {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input {
+    width: 100%;
+    height: 48px;
+    padding-left: 45px;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 14px;
+    line-height: 48px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input::placeholder {
+    color: #d0e8ff;
+    opacity: 1;
+    font-size: 14px;
+}
+
+.input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 2px rgba(0, 198, 255, 0.3);
+}
+
+.input-field i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #d0e8ff;
+    pointer-events: none;
+}
+
+label span {
+    position: absolute;
+    top: -18px;
+    left: 45px;
+    font-size: 12px;
+    color: #ffffffaa;
+}
+
+.submit {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 198, 255, 0.6);
+}
+
+.sign-in {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.sign-in span {
+    color: #fff;
+    font-size: 13px;
+}
+
+.sign-in a {
+    color: #00c6ff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sign-in a:hover {
+    text-decoration: underline;
+}

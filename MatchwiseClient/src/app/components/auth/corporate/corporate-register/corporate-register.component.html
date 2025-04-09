@@ -11,49 +11,51 @@
                 <div class="input-box">
                     <header>Kayıt Ol</header>
                     <div class="input-field">
-                        <input type="text" class="input" id="corporateName" autocomplete="off" required>
+                        <input type="text" class="input" id="corporateName" #txtCorporateName autocomplete="off"
+                            required>
                         <label for="corporateName">
                             <i class='bx bxs-business'></i>
                             <span>Şirket Adı</span>
                         </label>
                     </div>
                     <div class="input-field">
-                        <input type="text" class="input" id="taxNumber" autocomplete="off" required>
+                        <input type="text" class="input" id="taxNumber" #txtTaxNumber autocomplete="off" required>
                         <label for="taxNumber">
                             <i class='bx bxs-key'></i>
                             <span>Vergi Numarası</span>
                         </label>
                     </div>
                     <div class="input-field">
-                        <input type="text" class="input" id="sector" autocomplete="off" required>
+                        <input type="text" class="input" id="sector" #txtSector autocomplete="off" required>
                         <label for="sector">
                             <i class='bx bxs-detail'></i>
                             <span>Sektör</span>
                         </label>
                     </div>
                     <div class="input-field">
-                        <input type="text" class="input" id="location" autocomplete="off" required>
+                        <input type="text" class="input" id="location" #txtLocation autocomplete="off" required>
                         <label for="location">
                             <i class='bx bxs-location-plus'></i>
                             <span>Konum(Şehir)</span>
                         </label>
                     </div>
                     <div class="input-field">
-                        <input type="text" class="input" id="email" autocomplete="off" required>
+                        <input type="text" class="input" id="email" #txtEmail autocomplete="off" required>
                         <label for="email">
                             <i class='bx bxs-envelope'></i>
                             <span>Email</span>
                         </label>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="input" id="password" autocomplete="off" required>
+                        <input type="password" class="input" id="password" #txtPassword autocomplete="off" required>
                         <label for="password">
                             <i class='bx bxs-lock-alt'></i>
                             <span>Şifre</span>
                         </label>
                     </div>
                     <div class="input-field">
-                        <input type="submit" class="submit" value="Giriş">
+                        <input type="submit" class="submit" value="Giriş"
+                            (click)="create(txtCorporateName, txtTaxNumber, txtSector, txtLocation, txtEmail, txtPassword)">
                     </div>
                     <div class="sign-in">
                         <span>Hesabınız var mı? <a routerLink="/kurumsal-giris">Giriş</a></span>

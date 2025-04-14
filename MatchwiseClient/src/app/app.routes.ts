@@ -10,7 +10,7 @@ import { CorporateLoginComponent } from './components/auth/corporate/corporate-l
 import { CorporateRegisterComponent } from './components/auth/corporate/corporate-register/corporate-register.component';
 
 export const routes: Routes = [
-  { path: 'bireysel-giris', component: IndividualLoginComponent},
+  { path: 'bireysel-giris', component: IndividualLoginComponent },
   { path: 'bireysel-kayit', component: IndividualRegisterComponent },
   { path: 'admin-giris', component: AdminLoginComponent },
   { path: 'admin-kayit', component: AdminRegisterComponent },
@@ -26,7 +26,13 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminLayoutComponent
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: 'corporations',
+        loadComponent: () => import('../../src/app/components/admin/admin-layout/corporations/corporations.component').then(m => m.CorporationsComponent)
+      }
+    ]
   },
   {
     path: 'kurumsal',

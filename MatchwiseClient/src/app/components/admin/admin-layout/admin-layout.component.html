@@ -5,17 +5,17 @@
     </div>
     <ul class="sidebar-links">
         <h4>
-            <span>Mülakat</span>
+            <span></span>
         </h4>
         <li>
-            <a href="#">
-                <i class='bx bx-grid-alt' ></i>
-                Mülakatlar
+            <a routerLink="corporations" routerLinkActive="active">
+                <i class='bx bx-grid-alt'></i>
+                Kurumlar
             </a>
         </li>
         <li>
             <a href="#">
-                <i class='bx bx-group' ></i>
+                <i class='bx bx-group'></i>
                 Mülakat Ekle
             </a>
         </li>
@@ -30,13 +30,13 @@
         </li>
         <li>
             <a href="#">
-                <i class='bx bx-cog' ></i>
+                <i class='bx bx-cog'></i>
                 Ayarlar
             </a>
         </li>
         <li>
             <a href="#">
-                <i class='bx bx-log-out' ></i>
+                <i class='bx bx-log-out'></i>
                 Çıkış
             </a>
         </li>
@@ -64,11 +64,13 @@
         </div>
         <div class="user-info">
             <div class="search-box">
-                <i class='bx bx-search' ></i>
+                <i class='bx bx-search'></i>
                 <input type="text" placeholder="Ara">
             </div>
             <img src="/enes_yalcin.jpeg" alt="">
         </div>
     </div>
+
+    <router-outlet></router-outlet>
 </div>
 <!-- NAVBAR END -->

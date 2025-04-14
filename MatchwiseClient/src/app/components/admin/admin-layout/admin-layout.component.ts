@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { BaseComponent } from '../../base/base.component';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { SpinnerType } from '../../../enums/spinnerType';
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-admin-layout',
-  imports: [],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './admin-layout.component.html',
   styleUrl: './admin-layout.component.scss'
 })

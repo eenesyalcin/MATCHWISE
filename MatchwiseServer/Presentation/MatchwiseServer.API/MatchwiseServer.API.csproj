@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\MatchwiseServer.Application\MatchwiseServer.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\MatchwiseServer.Infrastructure\MatchwiseServer.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\MatchwiseServer.Persistence\MatchwiseServer.Persistence.csproj" />
   </ItemGroup>
 

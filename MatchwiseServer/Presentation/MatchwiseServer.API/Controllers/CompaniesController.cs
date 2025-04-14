@@ -38,6 +38,11 @@ namespace MatchwiseServer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(VM_Create_Company model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             // Şifreyi hash'le
             var passwordHasher = new PasswordHasher<Company>();
             string hashedPassword = passwordHasher.HashPassword(null, model.Password);
@@ -52,7 +57,8 @@ namespace MatchwiseServer.API.Controllers
                 Password = hashedPassword
             });
             await _companyWriteRepository.SaveAsync();
-            return StatusCode((int)HttpStatusCode.Created);
+            //return StatusCode((int)HttpStatusCode.Created);
+            return Ok(new { message = "Validasyon Başarılı" });
         }
 
         [HttpPut]

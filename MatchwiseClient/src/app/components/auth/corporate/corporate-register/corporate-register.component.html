@@ -7,61 +7,174 @@
                     <p>HOŞGELDİNİZ</p>
                 </div>
             </div>
-            <div class="col-md-6 right">
+            <form [formGroup]="validationForm" class="col-md-6 right">
                 <div class="input-box">
                     <header>Kayıt Ol</header>
                     <div class="input-field">
-                        <input type="text" class="input" id="corporateName" #txtCorporateName autocomplete="off"
-                            required>
+                        <input formControlName="corporateName" type="text" class="input" id="corporateName"
+                            #txtCorporateName autocomplete="off" required>
                         <label for="corporateName">
                             <i class='bx bxs-business'></i>
                             <span>Şirket Adı</span>
                         </label>
+                        <!-- Invalid ise yeşil tik -->
+                        <div *ngIf="validationForm.get('corporateName')?.touched && validationForm.get('corporateName')?.invalid"
+                            class="tooltip-error">
+                            <div class="tooltip-content">
+                                <i class='bx bxs-error-circle'></i>
+                                <span>
+                                    {{ getCorporateNameErrorMessage() }}
+                                </span>
+                            </div>
+                            <div class="tooltip-arrow"></div>
+                        </div>
+                        <!-- Valid ise yeşil tik -->
+                        <div *ngIf="validationForm.get('corporateName')?.valid && validationForm.get('corporateName')?.touched"
+                            class="valid-icon">
+                            <i class='bx bxs-check-circle'></i>
+                        </div>
                     </div>
+
+
                     <div class="input-field">
-                        <input type="text" class="input" id="taxNumber" #txtTaxNumber autocomplete="off" required>
+                        <input formControlName="taxNumber" type="text" class="input" id="taxNumber" #txtTaxNumber
+                            autocomplete="off" required>
                         <label for="taxNumber">
                             <i class='bx bxs-key'></i>
                             <span>Vergi Numarası</span>
                         </label>
+                        <!-- Invalid ise yeşil tik -->
+                        <div *ngIf="validationForm.get('taxNumber')?.touched && validationForm.get('taxNumber')?.invalid"
+                            class="tooltip-error">
+                            <div class="tooltip-content">
+                                <i class='bx bxs-error-circle'></i>
+                                <span>
+                                    {{ getTaxNumberErrorMessage() }}
+                                </span>
+                            </div>
+                            <div class="tooltip-arrow"></div>
+                        </div>
+                        <!-- Valid ise yeşil tik -->
+                        <div *ngIf="validationForm.get('taxNumber')?.valid && validationForm.get('taxNumber')?.touched"
+                            class="valid-icon">
+                            <i class='bx bxs-check-circle'></i>
+                        </div>
                     </div>
+
+
                     <div class="input-field">
-                        <input type="text" class="input" id="sector" #txtSector autocomplete="off" required>
+                        <input formControlName="sector" type="text" class="input" id="sector" #txtSector
+                            autocomplete="off" required>
                         <label for="sector">
                             <i class='bx bxs-detail'></i>
                             <span>Sektör</span>
                         </label>
+                        <!-- Invalid ise yeşil tik -->
+                        <div *ngIf="validationForm.get('sector')?.touched && validationForm.get('sector')?.invalid"
+                            class="tooltip-error">
+                            <div class="tooltip-content">
+                                <i class='bx bxs-error-circle'></i>
+                                <span>
+                                    {{ getSectorErrorMessage() }}
+                                </span>
+                            </div>
+                            <div class="tooltip-arrow"></div>
+                        </div>
+                        <!-- Valid ise yeşil tik -->
+                        <div *ngIf="validationForm.get('sector')?.valid && validationForm.get('sector')?.touched"
+                            class="valid-icon">
+                            <i class='bx bxs-check-circle'></i>
+                        </div>
                     </div>
+
+
                     <div class="input-field">
-                        <input type="text" class="input" id="location" #txtLocation autocomplete="off" required>
+                        <input formControlName="location" type="text" class="input" id="location" #txtLocation
+                            autocomplete="off" required>
                         <label for="location">
                             <i class='bx bxs-location-plus'></i>
                             <span>Konum(Şehir)</span>
                         </label>
+                        <!-- Invalid ise yeşil tik -->
+                        <div *ngIf="validationForm.get('location')?.touched && validationForm.get('location')?.invalid && validationForm.get('location')?.value"
+                            class="tooltip-error">
+                            <div class="tooltip-content">
+                                <i class='bx bxs-error-circle'></i>
+                                <span>
+                                    {{ getLocationErrorMessage() }}
+                                </span>
+                            </div>
+                            <div class="tooltip-arrow"></div>
+                        </div>
+                        <!-- Valid ise yeşil tik -->
+                        <div *ngIf="validationForm.get('location')?.valid && validationForm.get('location')?.touched"
+                            class="valid-icon">
+                            <i class='bx bxs-check-circle'></i>
+                        </div>
                     </div>
+
+
                     <div class="input-field">
-                        <input type="text" class="input" id="email" #txtEmail autocomplete="off" required>
+                        <input formControlName="email" type="text" class="input" id="email" #txtEmail autocomplete="off"
+                            required>
                         <label for="email">
                             <i class='bx bxs-envelope'></i>
                             <span>Email</span>
                         </label>
+                        <!-- Invalid ise yeşil tik -->
+                        <div *ngIf="validationForm.get('email')?.touched && validationForm.get('email')?.invalid"
+                            class="tooltip-error">
+                            <div class="tooltip-content">
+                                <i class='bx bxs-error-circle'></i>
+                                <span>
+                                    {{ getEmailErrorMessage() }}
+                                </span>
+                            </div>
+                            <div class="tooltip-arrow"></div>
+                        </div>
+                        <!-- Valid ise yeşil tik -->
+                        <div *ngIf="validationForm.get('email')?.valid && validationForm.get('email')?.touched"
+                            class="valid-icon">
+                            <i class='bx bxs-check-circle'></i>
+                        </div>
                     </div>
+
+
                     <div class="input-field">
-                        <input type="password" class="input" id="password" #txtPassword autocomplete="off" required>
+                        <input formControlName="password" type="password" class="input" id="password" #txtPassword
+                            autocomplete="off" required />
                         <label for="password">
-                            <i class='bx bxs-lock-alt'></i>
+                            <i class="bx bxs-lock-alt"></i>
                             <span>Şifre</span>
                         </label>
+
+                        <!-- Hatalıysa tooltip göster -->
+                        <div *ngIf="validationForm.get('password')?.touched && validationForm.get('password')?.invalid"
+                            class="tooltip-error">
+                            <div class="tooltip-content">
+                                <i class="bx bxs-error-circle"></i>
+                                <span>{{ getPasswordErrorMessage() }}</span>
+                            </div>
+                            <div class="tooltip-arrow"></div>
+                        </div>
+
+                        <!-- Geçerliyse yeşil tik göster -->
+                        <div *ngIf=" validationForm.get('password')?.valid && validationForm.get('password')?.touched"
+                            class="valid-icon">
+                            <i class="bx bxs-check-circle"></i>
+                        </div>
                     </div>
+
+
                     <div class="input-field">
-                        <input type="submit" class="submit" value="Giriş"
+                        <input type="button" class="submit" value="Kayıt Ol" [disabled]="!validationForm.valid"
                             (click)="create(txtCorporateName, txtTaxNumber, txtSector, txtLocation, txtEmail, txtPassword)">
                     </div>
                     <div class="sign-in">
                         <span>Hesabınız var mı? <a routerLink="/kurumsal-giris">Giriş</a></span>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

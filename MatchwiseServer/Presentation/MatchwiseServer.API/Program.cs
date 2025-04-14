@@ -1,4 +1,6 @@
 
+using MatchwiseServer.Application;
+using MatchwiseServer.Infrastructure.Filters;
 using MatchwiseServer.Persistence;
 
 namespace MatchwiseServer.API
@@ -14,6 +16,7 @@ namespace MatchwiseServer.API
 
             // Persistence servislerini ekle
             builder.Services.AddPersistenceServices(configuration);
+            builder.Services.AddApplicationServices();
 
             builder.Services.AddCors(options =>
             {
@@ -25,7 +28,12 @@ namespace MatchwiseServer.API
                         .AllowCredentials());
             });
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>())
+                .ConfigureApiBehaviorOptions(options =>
+                {
+                    options.SuppressModelStateInvalidFilter = true;
+                });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

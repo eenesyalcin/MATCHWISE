@@ -37,7 +37,10 @@
                         </td>
                         <td>
                             <button><i class='bx bxs-edit'></i></button>
-                            <button><i class='bx bxs-trash'></i></button>
+                            <button
+                                [appDelete]="{ items: corporations, id: corporate.id, controller: deleteController }">
+                                <i class="bx bxs-trash"></i>
+                            </button>
                         </td>
                     </tr>
                 </tbody>

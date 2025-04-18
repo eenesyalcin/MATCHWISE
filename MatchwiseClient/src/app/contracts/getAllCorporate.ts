@@ -1,4 +1,5 @@
 export class GetAllCorporate {
+    id: string;
     corporateName: string;
     taxNumber: string;
     sector: string;

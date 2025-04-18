@@ -8,15 +8,19 @@ import { CustomToastrService } from '../../../../services/custom-toastr.service'
 import { ToastrMessageType } from '../../../../enums/toastrMessageType';
 import { ToastrPosition } from '../../../../enums/toastrPosition';
 import { CommonModule, NgFor } from '@angular/common';
+import { DeleteDirective } from '../../../../directives/delete.directive';
+
+declare var $: any;
 
 @Component({
   selector: 'app-corporations',
-  imports: [NgFor, CommonModule],
+  imports: [NgFor, CommonModule, DeleteDirective],
   templateUrl: './corporations.component.html',
   styleUrl: './corporations.component.scss'
 })
 export class CorporationsComponent extends BaseComponent implements OnInit {
 
+  readonly deleteController: string = "Companies";
   corporations: GetAllCorporate[] = [];
 
   constructor(

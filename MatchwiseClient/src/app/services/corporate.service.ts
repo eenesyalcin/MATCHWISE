@@ -10,9 +10,10 @@ import { Router } from '@angular/router';
 export class CorporateService {
 
   constructor(
-    private httpClientService: HttpClientService, 
+    private httpClientService: HttpClientService,
     private router: Router
   ) { }
+
 
   create(corporate: CreateCorporate, successCallBack?: any, errorCallBack?: any) {
     this.httpClientService.post({
@@ -28,6 +29,24 @@ export class CorporateService {
         });
       });
       errorCallBack(errorMessages);
+    });
+  }
+
+
+  getAll(successCallBack?: any, errorCallBack?: any) {
+    this.httpClientService.get({
+      controller: "Companies"
+    }).subscribe(result => {
+      successCallBack(result);
+    }, (errorResponse: HttpErrorResponse) => {
+      const _error: Array<{ key: string, value: Array<string> }> = errorResponse.error;
+      let errorMessage: string[] = [];
+      _error.forEach(errorVavlue => {
+        errorVavlue.value.forEach(_errorValue => {
+          errorMessage.push(_errorValue);
+        });
+      });
+      errorCallBack(errorMessage);
     });
   }
 

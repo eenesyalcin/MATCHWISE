@@ -1,1 +1,47 @@
-<p>corporations works!</p>
+<div class="body">
+    <div class="table">
+        <div class="table-header">
+            <p>Kurumlar Listesi</p>
+            <div>
+                <input placeholder="Ara...">
+                <button class="add-new">+ Kurum Ekle</button>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Kurum Adı</th>
+                        <th>Vergi Numarası</th>
+                        <th>Sektör</th>
+                        <th>Konum</th>
+                        <th>Email</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let corporate of corporations; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ corporate.corporateName }}</td>
+                        <td>{{ corporate.taxNumber }}</td>
+                        <td>{{ corporate.sector }}</td>
+                        <td>{{ corporate.location }}</td>
+                        <td>{{ corporate.email }}</td>
+                        <td>
+                            Tarih: {{ corporate.createdDate | date:'dd.MM.yyyy' }}
+                            --
+                            Saat: {{ corporate.createdDate | date:'HH:mm' }}
+                        </td>
+                        <td>
+                            <button><i class='bx bxs-edit'></i></button>
+                            <button><i class='bx bxs-trash'></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

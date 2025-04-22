@@ -31,6 +31,10 @@ export const routes: Routes = [
       {
         path: 'corporations',
         loadComponent: () => import('../../src/app/components/admin/admin-layout/corporations/corporations.component').then(m => m.CorporationsComponent)
+      },
+      {
+        path: "add-corporation",
+        loadComponent: () => import('../../src/app/components/admin/admin-layout/add-corporation/add-corporation.component').then(m => m.AddCorporationComponent)
       }
     ]
   },

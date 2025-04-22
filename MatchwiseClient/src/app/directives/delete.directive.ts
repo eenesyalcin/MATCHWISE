@@ -7,6 +7,7 @@ import { CustomToastrService } from '../services/custom-toastr.service';
 import { SpinnerType } from '../enums/spinnerType';
 import { ToastrMessageType } from '../enums/toastrMessageType';
 import { ToastrPosition } from '../enums/toastrPosition';
+import { DeleteModalService } from '../services/delete-modal.service';
 
 @Directive({
   selector: '[appDelete]'
@@ -21,7 +22,8 @@ export class DeleteDirective extends BaseComponent {
     private elementRef: ElementRef,
     private renderer: Renderer2,
     private httpClientService: HttpClientService,
-    private customToastrService: CustomToastrService
+    private customToastrService: CustomToastrService,
+    private deleteModalService: DeleteModalService
   ) {
     super(spinnerService);
   }
@@ -39,8 +41,9 @@ export class DeleteDirective extends BaseComponent {
     const id = this.deleteParameters.id
     const controller = this.deleteParameters.controller
 
-    // Burada mesaj gösteriyoruz ve kullanıcı silmek istemezse metodu sonlandırıyoruz.
-    if (!confirm("Bu kaydı silmek istediğinizden emin misiniz?")) {
+    const msg = this.deleteParameters.confirmMessage || 'Bu kaydı silmek istediğinize emin misiniz';
+    const confirmed = await this.deleteModalService.open(msg);
+    if (!confirmed) {
       return;
     }
 

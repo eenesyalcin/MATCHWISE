@@ -38,7 +38,7 @@
                         <td>
                             <button><i class='bx bxs-edit'></i></button>
                             <button
-                                [appDelete]="{ items: corporations, id: corporate.id, controller: deleteController }">
+                                [appDelete]="{ controller: deleteController, id: corporate.id, items: corporations, confirmMessage: 'Şirketi silmek istediğinize emin misiniz?' }">
                                 <i class="bx bxs-trash"></i>
                             </button>
                         </td>

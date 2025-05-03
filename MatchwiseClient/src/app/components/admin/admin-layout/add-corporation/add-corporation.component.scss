@@ -1,0 +1,163 @@
+/* ─── KÜÇÜK BOYUTLU FORM ───────────────────────────────── */
+.container {
+    width: 400px;                       /* Daha küçük genişlik */
+    padding: 20px 15px;                 /* Yarılan iç boşluk */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;                /* Ufak yuvarlama */
+    box-shadow: 0 6px 24px rgba(31, 38, 135, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 30px auto;
+  }
+  
+  /* ─── ÜST BAŞLIK ─────────────────────────────────────── */
+  .top-header header {
+    color: #000;
+    font-size: 24px;                    /* 32px → 24px */
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;                /* 30px → 20px */
+  }
+  
+  /* ─── INPUT FIELD ────────────────────────────────────── */
+  .input-field {
+    position: relative;
+    margin-bottom: 20px;                /* 25px → 20px */
+  }
+  
+  .input-field i {
+    position: absolute;
+    top: 50%;
+    left: 12px;                         /* 15px → 12px */
+    transform: translateY(-50%);
+    font-size: 16px;                    /* 18px → 16px */
+    color: #000;
+    pointer-events: none;
+  }
+  
+  /* ─── INPUT KUTUSU ───────────────────────────────────── */
+  .input {
+    width: 100%;
+    height: 36px;                       /* 48px → 36px */
+    line-height: 36px;
+    padding-left: 40px;                 /* 45px → 40px */
+    border: none;
+    border-radius: 20px;                /* 25px → 20px */
+    background: rgba(255, 255, 255, 0.12);
+    color: #000;
+    font-size: 13px;                    /* 14px → 13px */
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input::placeholder {
+    color: grey;
+    opacity: 1;
+    font-size: 13px;
+  }
+  
+  .input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 2px rgba(0, 198, 255, 0.3);
+  }
+  
+  /* ─── SUBMIT BUTONU ──────────────────────────────────── */
+  .submit {
+    width: 60%;                         /* 50% → 60% */
+    height: 36px;                       /* 48px → 36px */
+    margin: 0 auto;
+    display: block;
+    border: none;
+    border-radius: 20px;                /* 25px → 20px */
+    background: linear-gradient(135deg, #00a500, #009000);
+    color: white;
+    font-size: 14px;                    /* 16px → 14px */
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .submit:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 8px rgba(47, 79, 47, 0.6);
+  }
+  
+  
+
+
+
+
+
+  /* ─── VALIDASYON İÇİN GEREKLİ CSS ───────────────────────── */
+
+/* 1) input-field’in child i’si (form içi ikon) siyah kalsın */
+.input-field > i {
+    color: #000;
+  }
+  
+  /* 2) tooltip-error konteyneri */
+  .tooltip-error {
+    position: absolute;
+    left: calc(100% + 6px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  /* 3) tooltip içeriği */
+  .tooltip-content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #b10000;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    white-space: nowrap;
+  flex-wrap: nowrap;
+  max-width: none;
+  }
+  
+  /* 4) tooltip içindeki hata ikonu kırmızı olsun */
+  .tooltip-content i {
+    color: #b10000;
+    font-size: 16px;
+  }
+  
+  /* 5) tooltip oku */
+  .tooltip-arrow {
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid rgba(255, 0, 0, 0.1);
+  }
+  
+  /* 6) valid ikon (tik) */
+  .valid-icon {
+    position: absolute;
+    right: 12px;      /* input’un sağ içi */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #28a745;
+    font-size: 18px;
+    z-index: 5;
+  }
+  
+  /* 7) valid ikonu için input’a padding */
+  .input-field input:valid {
+    padding-right: 40px;
+  }
+  

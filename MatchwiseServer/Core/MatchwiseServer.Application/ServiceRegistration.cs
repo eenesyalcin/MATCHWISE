@@ -24,8 +24,9 @@ namespace MatchwiseServer.Application
             // Application katmanındaki handler’ları tarar:
             services.AddMediatR(typeof(ServiceRegistration).Assembly);
 
-            // PasswordHasher<Company> kaydı:
+            // PasswordHasher<T> kaydı:
             services.AddScoped<IPasswordHasher<Company>, PasswordHasher<Company>>();
+            services.AddScoped<IPasswordHasher<Candidate>, PasswordHasher<Candidate>>();
         }
     }
 }

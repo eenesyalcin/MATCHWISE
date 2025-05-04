@@ -19,8 +19,4 @@
     <ProjectReference Include="..\MatchwiseServer.Domain\MatchwiseServer.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Commands\" />
-  </ItemGroup>
-
 </Project>

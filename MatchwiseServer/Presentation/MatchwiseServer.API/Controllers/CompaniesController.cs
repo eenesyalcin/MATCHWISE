@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using MatchwiseServer.Application.Features.Commands.CreateCompany;
 using MatchwiseServer.Application.Features.Queries.GetAllCompany;
 using MatchwiseServer.Application.Repositories;
 using MatchwiseServer.Application.ViewModels.Companies;
@@ -42,29 +43,18 @@ namespace MatchwiseServer.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(VM_Create_Company model)
+        public async Task<IActionResult> Post([FromBody] CreateCompanyCommandRequest request)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            // Şifreyi hash'le
-            var passwordHasher = new PasswordHasher<Company>();
-            string hashedPassword = passwordHasher.HashPassword(null, model.Password);
+            var response = await _mediator.Send(request);
 
-            await _companyWriteRepository.AddAsync(new()
-            {
-                CorporateName = model.CorporateName,
-                TaxNumber = model.TaxNumber,
-                Sector = model.Sector,
-                Location = model.Location,
-                Email = model.Email,
-                Password = hashedPassword
-            });
-            await _companyWriteRepository.SaveAsync();
-            //return StatusCode((int)HttpStatusCode.Created);
-            return Ok(new { message = "Validasyon Başarılı" });
+            if (!response.Success)
+                return BadRequest(response.Message);
+
+            // CompanyId olmadığı için sadece response dönüyoruz
+            return Ok(response);
         }
 
         [HttpPut]

@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using MatchwiseServer.Application.Features.Commands.Company.CreateCompany;
 using MatchwiseServer.Application.Features.Queries.Company.GetAllCompany;
+using MatchwiseServer.Application.Features.Queries.Company.GetByIdCompany;
 using MatchwiseServer.Application.Repositories;
 using MatchwiseServer.Application.ViewModels.Companies;
 using MatchwiseServer.Domain.Entities;
@@ -39,7 +40,10 @@ namespace MatchwiseServer.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            return Ok(await _companyReadRepository.GetByIdAsync(id, false));
+            var response = await _mediator.Send(new GetByIdCompanyQueryRequest(id));
+            if (response.Company is null)
+                return NotFound();
+            return Ok(response.Company);
         }
 
         [HttpPost]

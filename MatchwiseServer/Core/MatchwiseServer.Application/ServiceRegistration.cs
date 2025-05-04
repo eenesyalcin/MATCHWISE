@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MatchwiseServer.Domain.Entities;
+using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MatchwiseServer.Application
@@ -16,6 +19,10 @@ namespace MatchwiseServer.Application
         {
             services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(ServiceRegistration));
+
+            // Application katmanındaki handler’ları tarar:
+            services.AddMediatR(typeof(ServiceRegistration).Assembly);
         }
     }
 }

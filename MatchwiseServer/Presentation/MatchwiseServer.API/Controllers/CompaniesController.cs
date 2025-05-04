@@ -1,7 +1,9 @@
 ﻿using System.Net;
+using MatchwiseServer.Application.Features.Queries.GetAllCompany;
 using MatchwiseServer.Application.Repositories;
 using MatchwiseServer.Application.ViewModels.Companies;
 using MatchwiseServer.Domain.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,19 +16,23 @@ namespace MatchwiseServer.API.Controllers
     {
         readonly private ICompanyReadRepository _companyReadRepository;
         readonly private ICompanyWriteRepository _companyWriteRepository;
+        readonly IMediator _mediator;
 
         public CompaniesController(
             ICompanyReadRepository companyReadRepository,
-            ICompanyWriteRepository companyWriteRepository)
+            ICompanyWriteRepository companyWriteRepository,
+            IMediator mediator)
         {
             _companyReadRepository = companyReadRepository;
             _companyWriteRepository = companyWriteRepository;
+            _mediator = mediator;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(_companyReadRepository.GetAll(false));
+            GetAllCompanyQueryResponse response = await _mediator.Send(new GetAllCompanyQueryRequest());
+            return Ok(response.Companies);
         }
 
         [HttpGet("{id}")]

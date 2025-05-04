@@ -1,5 +1,7 @@
 ﻿using System.Net;
+using Azure.Core;
 using MatchwiseServer.Application.Features.Commands.Company.CreateCompany;
+using MatchwiseServer.Application.Features.Commands.Company.UpdateCompany;
 using MatchwiseServer.Application.Features.Queries.Company.GetAllCompany;
 using MatchwiseServer.Application.Features.Queries.Company.GetByIdCompany;
 using MatchwiseServer.Application.Repositories;
@@ -62,23 +64,13 @@ namespace MatchwiseServer.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(VM_Update_Company model)
+        public async Task<IActionResult> Put([FromBody] UpdateCompanyCommandRequest request)
         {
-            Company company = await _companyReadRepository.GetByIdAsync(model.Id);
+            var result = await _mediator.Send(request);
+            if (!result.Success)
+                return NotFound();    // ID bulunamadıysa 404
 
-            // Şifreyi hash'le
-            var passwordHasher = new PasswordHasher<Company>();
-            company.Password = passwordHasher.HashPassword(company, model.Password);
-
-            company.CorporateName = model.CorporateName;
-            company.TaxNumber = model.TaxNumber;
-            company.Sector = model.Sector;
-            company.Location = model.Location;
-            company.Email = model.Email;
-
-            await _companyWriteRepository.SaveAsync();
-
-            return Ok();
+            return NoContent();       // 204: güncelleme başarılı
         }
 
         [HttpDelete("{id}")]

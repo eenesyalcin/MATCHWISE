@@ -1,6 +1,6 @@
 ﻿using System.Net;
-using MatchwiseServer.Application.Features.Commands.CreateCompany;
-using MatchwiseServer.Application.Features.Queries.GetAllCompany;
+using MatchwiseServer.Application.Features.Commands.Company.CreateCompany;
+using MatchwiseServer.Application.Features.Queries.Company.GetAllCompany;
 using MatchwiseServer.Application.Repositories;
 using MatchwiseServer.Application.ViewModels.Companies;
 using MatchwiseServer.Domain.Entities;

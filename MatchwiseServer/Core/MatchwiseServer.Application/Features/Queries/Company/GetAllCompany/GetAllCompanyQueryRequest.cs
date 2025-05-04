@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace MatchwiseServer.Application.Features.Queries.GetAllCompany
+namespace MatchwiseServer.Application.Features.Queries.Company.GetAllCompany
 {
     public class GetAllCompanyQueryRequest : IRequest<GetAllCompanyQueryResponse>
     {

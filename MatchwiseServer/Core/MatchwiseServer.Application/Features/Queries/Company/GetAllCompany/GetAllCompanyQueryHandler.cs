@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MatchwiseServer.Application.Repositories;
 using MediatR;
 
-namespace MatchwiseServer.Application.Features.Queries.GetAllCompany
+namespace MatchwiseServer.Application.Features.Queries.Company.GetAllCompany
 {
     public class GetAllCompanyQueryHandler : IRequestHandler<GetAllCompanyQueryRequest, GetAllCompanyQueryResponse>
     {

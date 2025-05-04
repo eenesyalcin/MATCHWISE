@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace MatchwiseServer.Application.Features.Commands.CreateCompany
+namespace MatchwiseServer.Application.Features.Commands.Company.CreateCompany
 {
     public class CreateCompanyCommandRequest : IRequest<CreateCompanyCommandResponse>
     {

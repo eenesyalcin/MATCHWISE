@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MatchwiseServer.Domain.Entities;
+using F = MatchwiseServer.Domain.Entities;
 
-namespace MatchwiseServer.Application.Features.Queries.GetAllCompany
+namespace MatchwiseServer.Application.Features.Queries.Company.GetAllCompany
 {
     public class GetAllCompanyQueryResponse
     {
-        public IEnumerable<Company> Companies { get; set; }
+        public IEnumerable<F.Company> Companies { get; set; }
     }
 }

@@ -7,17 +7,18 @@ using MatchwiseServer.Application.Repositories;
 using MatchwiseServer.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using F = MatchwiseServer.Domain.Entities;
 
-namespace MatchwiseServer.Application.Features.Commands.CreateCompany
+namespace MatchwiseServer.Application.Features.Commands.Company.CreateCompany
 {
     public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommandRequest, CreateCompanyCommandResponse>
     {
         private readonly ICompanyWriteRepository _companyWriteRepository;
-        private readonly IPasswordHasher<Company> _passwordHasher;
+        private readonly IPasswordHasher<F.Company> _passwordHasher;
 
         public CreateCompanyCommandHandler(
             ICompanyWriteRepository companyWriteRepository,
-            IPasswordHasher<Company> passwordHasher)
+            IPasswordHasher<F.Company> passwordHasher)
         {
             _companyWriteRepository = companyWriteRepository;
             _passwordHasher = passwordHasher;
@@ -25,7 +26,7 @@ namespace MatchwiseServer.Application.Features.Commands.CreateCompany
 
         public async Task<CreateCompanyCommandResponse> Handle(CreateCompanyCommandRequest request, CancellationToken cancellationToken)
         {
-            var company = new Company
+            var company = new F.Company
             {
                 Id = Guid.NewGuid(),
                 CorporateName = request.CorporateName,

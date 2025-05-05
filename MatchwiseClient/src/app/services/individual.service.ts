@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClientService } from './http-client.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CreateIndividual } from '../contracts/createIndividual';
+import { firstValueFrom, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,15 @@ export class IndividualService {
         });
         errorCallBack(errorMessages);
       });
+    }
+
+    async login(email: string, password: string, callBackFunction?: () => void): Promise<void>{
+      const observable: Observable<any> = this.httpClientService.post({
+        controller: "Candidate",
+        action: "login"
+      }, { email, password })
+      await firstValueFrom(observable);
+      callBackFunction();
     }
   
 }

@@ -1,7 +1,10 @@
 
+using System.Text;
 using MatchwiseServer.Application;
 using MatchwiseServer.Infrastructure.Filters;
 using MatchwiseServer.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MatchwiseServer.API
 {
@@ -37,6 +40,26 @@ namespace MatchwiseServer.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new()
+                    {
+                        // Oluþturulacak token deðerini kimlerin, hangi sitelerin kullanacaðýný belirlediðimiz deðerdir.    --> www.bilmemne.com
+                        ValidateAudience = true,
+                        // Oluþturulacak token deðerini kimin daðýttýðýný ifade edeceðimiz alandýr.                         --> www.myapi.com
+                        ValidateIssuer = true,
+                        // Oluþturulan token deðerinin süresini kontrol edecek olan doðrulamadýr.
+                        ValidateLifetime = true,
+                        // Üretilecek token deðerinin uygulamamýza ait bir deðer olduðunu ifade eden security key deðerinin doðrulanmasýdýr.
+                        ValidateIssuerSigningKey = true,
+
+                        ValidAudience = builder.Configuration["Token:Audience"],
+                        ValidIssuer = builder.Configuration["Token:Issuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"]))
+                    };
+                });
 
             var app = builder.Build();
 

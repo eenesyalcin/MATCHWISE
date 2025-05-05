@@ -1,6 +1,8 @@
 ﻿using System.Net;
 using Azure.Core;
+using MatchwiseServer.Application.Features.Commands.Candidate.LoginCandidate;
 using MatchwiseServer.Application.Features.Commands.Company.CreateCompany;
+using MatchwiseServer.Application.Features.Commands.Company.LoginCompany;
 using MatchwiseServer.Application.Features.Commands.Company.RemoveCompany;
 using MatchwiseServer.Application.Features.Commands.Company.UpdateCompany;
 using MatchwiseServer.Application.Features.Queries.Company.GetAllCompany;
@@ -81,6 +83,13 @@ namespace MatchwiseServer.API.Controllers
                 return NotFound();
             }
             return NoContent();
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Login(LoginCompanyCommandRequest loginCompanyCommandRequest)
+        {
+            LoginCompanyCommandResponse loginCompanyCommandResponse = await _mediator.Send(loginCompanyCommandRequest);
+            return Ok(loginCompanyCommandResponse);
         }
     }
 }

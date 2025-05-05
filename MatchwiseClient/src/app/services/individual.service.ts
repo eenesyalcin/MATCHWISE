@@ -14,7 +14,7 @@ export class IndividualService {
 
   create(individual: CreateIndividual, successCallBack?: any, errorCallBack?: any) {
       this.httpClientService.post({
-        controller: "Candidates"
+        controller: "Candidate"
       }, individual).subscribe(result => {
         successCallBack();
       }, (errorResponse: HttpErrorResponse) => {

@@ -7,22 +7,31 @@
             </div>
             <div class="input-field">
                 <i class='bx bxs-detail'></i>
-                <input type="text" class="input" placeholder="Ad Soyad">
+                <input type="text" class="input" placeholder="Ad" #txtFirstName autocomplete="off" required>
+            </div>
+            <div class="input-field">
+                <i class='bx bxs-detail'></i>
+                <input type="text" class="input" placeholder="Soyad" #txtLastName autocomplete="off" required>
+            </div>
+            <div class="input-field">
+                <i class='bx bxs-detail'></i>
+                <input type="text" class="input" placeholder="Meslek" #txtJobTitle autocomplete="off">
             </div>
             <div class="input-field">
                 <i class='bx bxs-envelope'></i>
-                <input type="text" class="input" placeholder="Email">
+                <input type="text" class="input" placeholder="Email" #txtEmail autocomplete="off" required>
             </div>
             <div class="input-field">
                 <i class='bx bxs-lock-alt'></i>
-                <input type="password" class="input" placeholder="Şifre">
+                <input type="password" class="input" placeholder="Şifre" #txtPassword autocomplete="off" required>
             </div>
             <div class="input-field">
-                <input type="submit" class="submit" value="Kayıt Ol">
+                <input type="button" class="submit" value="Kayıt Ol"
+                (click)="create(txtFirstName, txtLastName, txtJobTitle, txtEmail, txtPassword)">
             </div>
             <div class="sign-in">
                 <span>Hesabınız var mı? <a routerLink="/bireysel-giris">Giriş</a></span>
-            </div>
+            </div> 
         </div>
     </div>
 </div>

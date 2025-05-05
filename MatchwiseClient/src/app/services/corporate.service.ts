@@ -5,6 +5,11 @@ import { Router } from '@angular/router';
 import { CreateCompanyCommandRequest } from '../contracts/CreateCompanyCommandRequest';
 import { CreateCompanyCommandResponse } from '../contracts/CreateCompanyCommandResponse';
 import { firstValueFrom, Observable } from 'rxjs';
+import { Token } from '../contracts/token';
+import { CustomToastrService } from './custom-toastr.service';
+import { ToastrMessageType } from '../enums/toastrMessageType';
+import { ToastrPosition } from '../enums/toastrPosition';
+import { TokenResponse } from '../contracts/tokenResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +18,7 @@ export class CorporateService {
 
   constructor(
     private httpClientService: HttpClientService,
+    private customToastrService: CustomToastrService,
     private router: Router
   ) { }
 
@@ -78,12 +84,19 @@ export class CorporateService {
   }
 
 
-  async login(email: string, password: string, callBackFunction?: () => void): Promise<void>{
-        const observable: Observable<any> = this.httpClientService.post({
+  async login(email: string, password: string, callBackFunction?: () => void): Promise<any>{
+        const observable: Observable<any | TokenResponse> = this.httpClientService.post<any | TokenResponse>({
           controller: "Companies",
           action: "login"
         }, { email, password })
-        await firstValueFrom(observable);
+        const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse; 
+        if(tokenResponse){
+          localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+          this.customToastrService.message("Kullanıcı girişi başarıyla sağlanmıştır.", "GİRİŞ BAŞARILI", {
+            messageType: ToastrMessageType.Success,
+            position: ToastrPosition.TopRight
+          });
+        }
         callBackFunction();
       }
 

@@ -11,6 +11,7 @@ using MatchwiseServer.Application.Repositories;
 using MatchwiseServer.Application.ViewModels.Companies;
 using MatchwiseServer.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,7 @@ namespace MatchwiseServer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CompaniesController : ControllerBase
     {
         readonly IMediator _mediator;
@@ -86,6 +88,7 @@ namespace MatchwiseServer.API.Controllers
         }
 
         [HttpPost("[action]")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginCompanyCommandRequest loginCompanyCommandRequest)
         {
             LoginCompanyCommandResponse loginCompanyCommandResponse = await _mediator.Send(loginCompanyCommandRequest);

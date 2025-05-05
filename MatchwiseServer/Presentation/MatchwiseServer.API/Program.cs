@@ -1,6 +1,7 @@
 
 using System.Text;
 using MatchwiseServer.Application;
+using MatchwiseServer.Infrastructure;
 using MatchwiseServer.Infrastructure.Filters;
 using MatchwiseServer.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -20,6 +21,7 @@ namespace MatchwiseServer.API
             // Persistence servislerini ekle
             builder.Services.AddPersistenceServices(configuration);
             builder.Services.AddApplicationServices();
+            builder.Services.AddInfrastructureServices();
 
             builder.Services.AddCors(options =>
             {
@@ -73,6 +75,7 @@ namespace MatchwiseServer.API
             app.UseCors("AllowAll");
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

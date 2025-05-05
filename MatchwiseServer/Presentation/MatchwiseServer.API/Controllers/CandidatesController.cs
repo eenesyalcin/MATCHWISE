@@ -10,7 +10,6 @@ namespace MatchwiseServer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "Admin")]
     public class CandidateController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -31,7 +30,6 @@ namespace MatchwiseServer.API.Controllers
         }
 
         [HttpPost("[action]")]
-        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginCandidateCommandRequest loginCandidateCommandRequest)
         {
             LoginCandidateCommandResponse loginCandidateCommandResponse = await _mediator.Send(loginCandidateCommandRequest);

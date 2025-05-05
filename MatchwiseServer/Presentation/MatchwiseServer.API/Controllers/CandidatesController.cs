@@ -1,4 +1,5 @@
 ﻿using MatchwiseServer.Application.Features.Commands.Candidate.CreateCandidate;
+using MatchwiseServer.Application.Features.Commands.Candidate.LoginCandidate;
 using MatchwiseServer.Application.Features.Commands.Company.CreateCompany;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -25,6 +26,13 @@ namespace MatchwiseServer.API.Controllers
                 return BadRequest(response.Message);
 
             return Ok(response);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Login(LoginCandidateCommandRequest loginCandidateCommandRequest)
+        {
+            LoginCandidateCommandResponse loginCandidateCommandResponse = await _mediator.Send(loginCandidateCommandRequest);
+            return Ok(loginCandidateCommandResponse);
         }
     }
 }

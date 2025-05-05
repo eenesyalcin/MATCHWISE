@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CreateCompanyCommandRequest } from '../contracts/CreateCompanyCommandRequest';
 import { CreateCompanyCommandResponse } from '../contracts/CreateCompanyCommandResponse';
+import { firstValueFrom, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -75,5 +76,15 @@ export class CorporateService {
       errorCallBack(errorMessage);
     });
   }
+
+
+  async login(email: string, password: string, callBackFunction?: () => void): Promise<void>{
+        const observable: Observable<any> = this.httpClientService.post({
+          controller: "Companies",
+          action: "login"
+        }, { email, password })
+        await firstValueFrom(observable);
+        callBackFunction();
+      }
 
 }

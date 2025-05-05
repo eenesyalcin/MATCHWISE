@@ -36,7 +36,8 @@ namespace MatchwiseServer.Infrastructure.Services.Token
                 audience: _configuration["Token:Audience"],
                 issuer: _configuration["Token:Issuer"],
                 expires: token.Expiration,
-                notBefore: DateTime.UtcNow
+                notBefore: DateTime.UtcNow,
+                signingCredentials: signingCredentials
                 );
 
             // Token oluşturucu sınıfından bir örnek alalım.

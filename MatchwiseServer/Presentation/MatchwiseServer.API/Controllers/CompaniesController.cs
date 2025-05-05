@@ -20,7 +20,6 @@ namespace MatchwiseServer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class CompaniesController : ControllerBase
     {
         readonly IMediator _mediator;
@@ -88,7 +87,6 @@ namespace MatchwiseServer.API.Controllers
         }
 
         [HttpPost("[action]")]
-        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginCompanyCommandRequest loginCompanyCommandRequest)
         {
             LoginCompanyCommandResponse loginCompanyCommandResponse = await _mediator.Send(loginCompanyCommandRequest);

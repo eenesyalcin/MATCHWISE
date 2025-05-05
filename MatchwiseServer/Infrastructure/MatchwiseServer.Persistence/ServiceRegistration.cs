@@ -1,5 +1,6 @@
 ﻿using MatchwiseServer.Application.Repositories;
 using MatchwiseServer.Application.Repositories.Candidate;
+using MatchwiseServer.Domain.Entities.Identity;
 using MatchwiseServer.Persistence.Contexts;
 using MatchwiseServer.Persistence.Repositories;
 using MatchwiseServer.Persistence.Repositories.Candidate;
@@ -17,6 +18,7 @@ namespace MatchwiseServer.Persistence
 
             services.AddDbContext<MatchwiseServerDbContext>(options =>
                 options.UseSqlServer(connectionString));
+            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<MatchwiseServerDbContext>();
 
             services.AddScoped<IInterviewReadRepository, InterviewReadRepository>();
             services.AddScoped<IInterviewWriteRepository, InterviewWriteRepository>();

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MatchwiseServer.Application.Repositories;
 using MatchwiseServer.Domain.Entities;
+using MatchwiseServer.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using F = MatchwiseServer.Domain.Entities;
@@ -14,18 +15,35 @@ namespace MatchwiseServer.Application.Features.Commands.Company.CreateCompany
     public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommandRequest, CreateCompanyCommandResponse>
     {
         private readonly ICompanyWriteRepository _companyWriteRepository;
-        private readonly IPasswordHasher<F.Company> _passwordHasher;
+        private readonly UserManager<AppUser> _userManager;
 
         public CreateCompanyCommandHandler(
             ICompanyWriteRepository companyWriteRepository,
-            IPasswordHasher<F.Company> passwordHasher)
+            UserManager<AppUser> userManager)
         {
             _companyWriteRepository = companyWriteRepository;
-            _passwordHasher = passwordHasher;
+            _userManager = userManager;
         }
 
         public async Task<CreateCompanyCommandResponse> Handle(CreateCompanyCommandRequest request, CancellationToken cancellationToken)
         {
+            var user = new AppUser
+            {
+                UserName = request.Email,
+                Email = request.Email
+            };
+            var identityResult = await _userManager.CreateAsync(user, request.Password);
+            if (!identityResult.Succeeded)
+            {
+                // Oluşan hata mesajlarını birleştirip dönebilirsiniz
+                var errors = string.Join("; ", identityResult.Errors.Select(e => e.Description));
+                return new CreateCompanyCommandResponse
+                {
+                    Success = false,
+                    Message = errors
+                };
+            }
+
             var company = new F.Company
             {
                 Id = Guid.NewGuid(),
@@ -33,9 +51,8 @@ namespace MatchwiseServer.Application.Features.Commands.Company.CreateCompany
                 TaxNumber = request.TaxNumber,
                 Sector = request.Sector,
                 Location = request.Location,
-                Email = request.Email
+                AppUserId = user.Id
             };
-            company.Password = _passwordHasher.HashPassword(company, request.Password);
 
             await _companyWriteRepository.AddAsync(company);
             await _companyWriteRepository.SaveAsync();

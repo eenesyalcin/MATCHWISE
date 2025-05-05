@@ -9,5 +9,7 @@ namespace MatchwiseServer.Application.Features.Commands.Company.LoginCompany
 {
     public class LoginCompanyCommandRequest : IRequest<LoginCompanyCommandResponse>
     {
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }

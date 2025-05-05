@@ -5,10 +5,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { CorporateService } from '../../../../services/corporate.service';
 import { CustomToastrService } from '../../../../services/custom-toastr.service';
 import { SpinnerType } from '../../../../enums/spinnerType';
-import { CreateCorporate } from '../../../../contracts/createCorporate';
 import { ToastrMessageType } from '../../../../enums/toastrMessageType';
 import { ToastrPosition } from '../../../../enums/toastrPosition';
 import { CommonModule, NgIf } from '@angular/common';
+import { CreateCompanyCommandRequest } from '../../../../contracts/CreateCompanyCommandRequest';
 
 @Component({
   selector: 'app-add-corporation',
@@ -122,7 +122,7 @@ export class AddCorporationComponent extends BaseComponent implements OnInit{
 
   create(corporateName: HTMLInputElement, taxNumber: HTMLInputElement, sector: HTMLInputElement, location: HTMLInputElement, email: HTMLInputElement, password: HTMLInputElement){
     this.showSpinner(SpinnerType.Cog);
-    const create_corporate: CreateCorporate = new CreateCorporate();
+    const create_corporate: CreateCompanyCommandRequest = new CreateCompanyCommandRequest();
     create_corporate.corporateName = corporateName.value;
     create_corporate.taxNumber = taxNumber.value;
     create_corporate.sector = sector.value;

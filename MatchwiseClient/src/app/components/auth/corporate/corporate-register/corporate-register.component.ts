@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CorporateService } from '../../../../services/corporate.service';
-import { CreateCorporate } from '../../../../contracts/createCorporate';
 import { BaseComponent } from '../../../base/base.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SpinnerType } from '../../../../enums/spinnerType';
@@ -10,6 +9,7 @@ import { ToastrMessageType } from '../../../../enums/toastrMessageType';
 import { ToastrPosition } from '../../../../enums/toastrPosition';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule, NgIf } from '@angular/common';
+import { CreateCompanyCommandRequest } from '../../../../contracts/CreateCompanyCommandRequest';
 
 @Component({
   selector: 'app-corporate-register',
@@ -125,7 +125,7 @@ export class CorporateRegisterComponent extends BaseComponent implements OnInit 
 
   create(corporateName: HTMLInputElement, taxNumber: HTMLInputElement, sector: HTMLInputElement, location: HTMLInputElement, email: HTMLInputElement, password: HTMLInputElement) {
     this.showSpinner(SpinnerType.SquareJellyBox);
-    const create_corporate: CreateCorporate = new CreateCorporate();
+    const create_corporate: CreateCompanyCommandRequest = new CreateCompanyCommandRequest();
     create_corporate.corporateName = corporateName.value;
     create_corporate.taxNumber = taxNumber.value;
     create_corporate.sector = sector.value;

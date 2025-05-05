@@ -1,4 +1,4 @@
-export class CreateCorporate {
+export class CreateCompanyCommandRequest {
     corporateName: string;
     taxNumber: string;
     sector: string;

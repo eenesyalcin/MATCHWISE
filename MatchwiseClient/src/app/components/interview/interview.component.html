@@ -1,1 +1,81 @@
-<p>interview works!</p>
+<div class="body">
+    <header class="header">
+        <a href="#home" class="logo">MATCH<span>WISE</span></a>
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#home" class="active">Anasayfa</a>
+            <a href="#services">Hizmetler</a>
+            <a href="#our-team">Ekibimiz</a>
+            <a href="#contact">İletişim</a>
+            <div class="btn-group">
+                <button class="btn main-btn" (click)="toggleLoginMenu()">Giriş Yap</button>
+                <div class="login-dropdown" *ngIf="loginMenuOpen">
+                    <a routerLink="/kurumsal-giris" class="btn sub-btn">Kurumsal Giriş</a>
+                    <a routerLink="/bireysel-giris" class="btn sub-btn">Bireysel Giriş</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="slide-container">
+        <div class="slide-content">
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="image-content">
+                        <span class="overlay"></span>
+
+                        <div class="card-image">
+                            <img src="backend.jpg" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="name">Backend Geliştirici</h2>
+                        <p class="description">
+                            Ölçeklenebilir ve güvenli sunucu tarafı uygulamalarını tasarlayıp geliştirebilecek, RESTful
+                            API ve mikroservis mimarilerinde deneyimli bir Backend Geliştirici arıyoruz.
+                            Docker/Kubernetes ve bulut platformları (AWS, Azure veya GCP) konusundaki tecrübeniz artı
+                            puan sağlayacaktır.
+                        </p>
+                        <button class="button">Mülakata Gir</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="image-content">
+                        <span class="overlay"></span>
+
+                        <div class="card-image">
+                            <img src="frontend.jpg" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="name">Frontend Geliştirici</h2>
+                        <p class="description">Modern, performans odaklı ve erişilebilir kullanıcı arayüzleri tasarlayıp
+                            geliştirebilecek, React, Angular veya Vue.js gibi frameworklerde deneyimli bir Frontend
+                            Geliştirici arıyoruz. Responsive tasarım, performans optimizasyonu ve CI/CD süreçleri
+                            entegrasyonundaki bilginiz artı puan sağlayacaktır.</p>
+                        <button class="button">Mülakata Gir</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="image-content">
+                        <span class="overlay"></span>
+
+                        <div class="card-image">
+                            <img src="machine_learning.jpg" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="name">Yapay Zeka Uzmanı</h2>
+                        <p class="description">Veri odaklı makine öğrenmesi modelleri tasarlayıp geliştirebilecek,
+                            Python ile TensorFlow veya PyTorch deneyimine sahip bir Makine Öğrenmesi Mühendisi arıyoruz.
+                            Model dağıtımı, MLOps süreçleri ve AWS SageMaker veya Azure ML gibi bulut platformları
+                            konusundaki bilginiz artı puan sağlayacaktır.</p>
+                        <button class="button">Mülakata Gir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

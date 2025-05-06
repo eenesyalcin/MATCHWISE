@@ -10,11 +10,12 @@
         <a href="#our-team">Ekibimiz</a>
         <a href="#contact">İletişim</a>
         <div class="btn-group">
-            <button class="btn main-btn" (click)="toggleLoginMenu()">Giriş Yap</button>
+            <button class="btn main-btn" (click)="toggleLoginMenu()" *ngIf="!authService.isAuthenticated">Giriş Yap</button>
             <div class="login-dropdown" *ngIf="loginMenuOpen">
                 <a routerLink="/kurumsal-giris" class="btn sub-btn">Kurumsal Giriş</a>
                 <a routerLink="/bireysel-giris" class="btn sub-btn">Bireysel Giriş</a>
             </div>
+            <button type="button" class="btn main-btn" *ngIf="authService.isAuthenticated" (click)="signOut()">Çıkış Yap</button>
         </div>
     </nav>
 </header>

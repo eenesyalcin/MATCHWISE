@@ -8,6 +8,7 @@ import { AdminLoginComponent } from './components/auth/admin/admin-login/admin-l
 import { AdminRegisterComponent } from './components/auth/admin/admin-register/admin-register.component';
 import { CorporateLoginComponent } from './components/auth/corporate/corporate-login/corporate-login.component';
 import { CorporateRegisterComponent } from './components/auth/corporate/corporate-register/corporate-register.component';
+import { InterviewComponent } from './components/interview/interview.component';
 
 export const routes: Routes = [
   { path: 'bireysel-giris', component: IndividualLoginComponent },
@@ -41,5 +42,7 @@ export const routes: Routes = [
   {
     path: 'kurumsal',
     component: CorporateLayoutComponent
-  }
+  },
+
+  { path: 'mulakat', component: InterviewComponent },
 ];

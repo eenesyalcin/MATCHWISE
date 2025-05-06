@@ -9,6 +9,7 @@ import { AdminRegisterComponent } from './components/auth/admin/admin-register/a
 import { CorporateLoginComponent } from './components/auth/corporate/corporate-login/corporate-login.component';
 import { CorporateRegisterComponent } from './components/auth/corporate/corporate-register/corporate-register.component';
 import { InterviewComponent } from './components/interview/interview.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: 'bireysel-giris', component: IndividualLoginComponent },
@@ -44,5 +45,5 @@ export const routes: Routes = [
     component: CorporateLayoutComponent
   },
 
-  { path: 'mulakat', component: InterviewComponent },
+  { path: 'mulakat', component: InterviewComponent, canActivate: [authGuard] },
 ];
